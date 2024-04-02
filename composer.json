@@ -1,6 +1,7 @@
 {
     "name": "stee1l/framework",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "mac",
