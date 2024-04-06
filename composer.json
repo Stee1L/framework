@@ -12,7 +12,8 @@
     "require": {
         "illuminate/database": "8.x-dev",
         "illuminate/events": "8.x-dev",
-        "larapack/dd": "dev-master"
+        "larapack/dd": "dev-master",
+        "nikic/fast-route": "v1.x-dev"
     },
     "autoload": {
         "psr-4": {
