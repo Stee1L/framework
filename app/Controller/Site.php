@@ -22,8 +22,16 @@ class Site
 
     public function index(Request $request): string
     {
-        $posts = !is_null($request->id) ? Cat::where('id', $request->id)->get() : Cat::all();
-        return (new View())->render('site.post', ['posts' => $posts]);
+        if (app()->auth::user()->id_role===1){
+
+            $users = User::all()->filter(fn(User $user)=>$user->id_role!==1)->all();
+                 return (new View())->render('site.post', ['objects' => $users,'message'=>'Список пользователей']);
+
+        }else{
+            $posts = !is_null($request->id) ? Cat::where('id', $request->id)->get() : Cat::all();
+            return (new View())->render('site.post', ['objects' => $posts, 'message'=>'Список котосотрудники']);
+        }
+
     }
 
     public function signup(Request $request): string

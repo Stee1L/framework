@@ -1,9 +1,12 @@
-<h1>Список котиков</h1>
+<h1> <?= $message ?? ''; ?> </h1>
 <ol>
     <?php
-    foreach ($posts as $post) {
-        echo '<li>' . $post->name . '</li>';
+    foreach ($objects as $object) {
+        echo '<li>' . $object->name . ', ' . $object->login . '</li>';
     }
     ?>
+
 </ol>
+
+<button>Добавить кожанный мешок</button>
 
