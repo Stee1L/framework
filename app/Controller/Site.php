@@ -11,7 +11,7 @@ use Src\View;
 use Src\Request;
 use Model\User;
 use Src\Auth\Auth;
-
+use Model\View as ViewData;
 
 
 class Site
@@ -79,6 +79,17 @@ class Site
         }
         return new View('site.creatCats', ['compositions' => $composition,
             'divisions' => $division, 'positions' => $position,]);
+    }
+
+    public function creatDivision(Request $request): string
+    {
+
+        $views =  ViewData::all();
+
+        if ($request->method === 'POST' && Division::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
+        return new View('site.creatDivision', ['views' => $views]);
     }
 
 

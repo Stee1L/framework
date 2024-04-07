@@ -23,6 +23,7 @@
     <button onclick="window.location.href='/signup'">Добавить кожанного мешка</button>
 <?php else: ?>
     <button onclick="window.location.href='/creatCats'">Добавить кота</button>
+    <button onclick="window.location.href='/creatDivision'">Добавить подразделение</button>
 <?php endif; ?>
 
 

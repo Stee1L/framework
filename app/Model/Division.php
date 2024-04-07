@@ -13,7 +13,17 @@ class Division extends Model
     protected $keyType = 'string';
     protected $table = 'Division';
 
+    protected $fillable = [
+        'id_division',
+        'name',
+        'id_view',
+    ];
+
     public function cats() {
         return $this->hasMany(Cat::class );
+    }
+
+    public function view() {
+        return $this->belongsTo(View::class, 'id_view', 'id_view' );
     }
 }
