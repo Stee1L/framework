@@ -4,6 +4,9 @@ namespace Controller;
 
 use Illuminate\Support\Facades\DB;
 use Model\Cat;
+use Model\Composition;
+use Model\Division;
+use Model\Position;
 use Src\View;
 use Src\Request;
 use Model\User;
@@ -22,6 +25,7 @@ class Site
 
     public function index(Request $request): string
     {
+
         if (app()->auth::user()->id_role===1){
 
             $users = User::all()->filter(fn(User $user)=>$user->id_role!==1)->all();
@@ -37,7 +41,7 @@ class Site
     public function signup(Request $request): string
     {
         if ($request->method === 'POST' && User::create($request->all())) {
-            app()->route->redirect('/go');
+            app()->route->redirect('/hello');
         }
         return new View('site.signup');
     }
@@ -60,6 +64,21 @@ class Site
     {
         Auth::logout();
         app()->route->redirect('/hello');
+    }
+
+    public function creatCat(Request $request): string
+    {
+
+
+        $composition =  Composition::all();
+        $position =  Position::all();
+        $division =  Division::all();
+
+        if ($request->method === 'POST' && Cat::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
+        return new View('site.creatCats', ['compositions' => $composition,
+            'divisions' => $division, 'positions' => $position,]);
     }
 
 
