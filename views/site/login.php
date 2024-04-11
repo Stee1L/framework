@@ -5,7 +5,10 @@
 <?php
 if (!app()->auth::check()):
     ?>
+
     <form method="post" style="margin-left: auto; margin-right: auto;  width: 18em">
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+
         <label>Логин
             <br><input type="text" name="login" style="border: none; -webkit-appearance: none;
   -ms-appearance: none; -moz-appearance: none; appearance: none; background: #f2f2f2;
