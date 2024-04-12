@@ -2,6 +2,7 @@
 
 namespace Model;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -32,6 +33,12 @@ class Cat extends Model
 
     public function position() {
         return $this->belongsTo(Position::class, 'id_position', 'id_position');
+    }
+
+    public function getAge(): int
+    {
+        //var_dump(Carbon::create());
+        return intval((time() - Carbon::create($this->Date_birth)->getTimestamp()) / 60 / 60 / 24 / 365);
     }
 }
 

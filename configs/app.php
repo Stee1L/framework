@@ -7,10 +7,9 @@ return [
 
     'validators' => [
         'required' => \Validators\RequireValidator::class,
-        'unique' => \Validators\UniqueValidator::class
-    ],
-    'routeAppMiddleware' => [
-        'trim' => \Middlewares\TrimMiddleware::class,
+        'unique' => \Validators\UniqueValidator::class,
+        'year'=> \Validators\YearValid::class,
+        'obscene'=>\Validators\ObsceneValid::class,
     ],
 
     //Классы для middleware

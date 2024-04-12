@@ -1,6 +1,6 @@
 <h2 style="margin-left: auto; margin-right: auto; width: 13em; padding-top: 50px;">Добавление котосотрудника</h2>
-<h3><?= $message ?? ''; ?></h3>
 <form style="margin-left: auto; margin-right: auto;  width: 18em"  method="post">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label>Имя  <br><input type="text" name="name"  style="border: none; -webkit-appearance: none;
   -ms-appearance: none; -moz-appearance: none; appearance: none; background: #f2f2f2;
   padding: 12px; border-radius: 3px; width: 250px; font-size: 14px;"></label>
@@ -66,5 +66,7 @@
 	font-size: 17px;
 	font-weight: 600;">Добавить</button>
 </form>
+
+<h3 style="color: red"><?= $message ?? ''; ?></h3>
 
 

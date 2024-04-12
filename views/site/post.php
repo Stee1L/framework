@@ -34,6 +34,38 @@
 	line-height: 40px;
 	font-size: 17px;
 	font-weight: 600;">Добавить подразделение</button>
+    <!-- Форма с выбором по составу -->
+    <form action="/hello" method="GET">
+        <label for="composition">Выберите состав:</label>
+        <select name="id_composition" style="border: none; -webkit-appearance: none;
+  -ms-appearance: none; -moz-appearance: none; appearance: none; background: #f2f2f2;
+  padding: 12px; border-radius: 3px; width: 250px; font-size: 14px;">
+            <?php
+            foreach ($compositions as $item) {
+
+                echo "<option value=\"{$item->id_composition}\">{$item->name}</option>" ;
+            }
+            ?>
+        </select>
+        <input type="submit" value="Применить">
+    </form>
+    <form action="/hello" method="GET">
+        <label for="division">Выберите подразделение:</label>
+        <select name="id_divisions" style="border: none; -webkit-appearance: none;
+  -ms-appearance: none; -moz-appearance: none; appearance: none; background: #f2f2f2;
+  padding: 12px; border-radius: 3px; width: 250px; font-size: 14px;">
+            <?php
+            foreach ($divisions as $item) {
+
+                echo "<option value=\"{$item->id_division}\">{$item->name}</option>" ;
+            }
+            ?>
+        </select>
+        <input type="submit" value="Применить">
+    </form>
+<form method="get" action="/hello">
+    <input type="submit" value="Сбросить фильтр">
+</form>
 <?php endif; ?>
 <ol>
     <?php
@@ -49,13 +81,19 @@
                     <br> Должность: {$object->position->name}
                      <br>Подразделения: {$object->division->name}
                      </li>";
+
+
        }
 
     }
     ?>
 
 </ol>
-
+<?php
+if (!is_null($age)) {
+    echo "Средний возраст: {$age}";
+}
+?>
 
 
 
